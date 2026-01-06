@@ -1,0 +1,564 @@
+/* =========================
+   Global + Theme
+   ========================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --toolbar-h: 72px;
+
+  /* Main palette (soft + colorful, no harsh black) */
+  --page-bg: #f3f4ff;       /* light periwinkle */
+  --card-bg: #ffffff;
+  --editor-shell: #101827;
+  --accent-orange: #15c210;
+  --accent-pink: #fb6fbb;
+  --accent-blue: #4f46e5;
+  --accent-mint: #22c7b8;
+
+  --muted: #6b7280;
+  --radius: 16px;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Root + body */
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--page-bg);
+  color: #a9afd3;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+/* App root */
+.app {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   NAVBAR / TOOLBAR
+   ========================= */
+.toolbar {
+  height: var(--toolbar-h);
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  /* colorful navbar */
+  background: linear-gradient(90deg, #111827, #312e81, #4f46e5);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.45);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.toolbar > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Poppins", system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e8dee9;
+}
+
+.brand .logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: conic-gradient(
+    from 180deg,
+    #13c4e4,
+    #35e804,
+    #f9739b,
+    #22c7b8,
+    #ee941f,
+    #fb923c
+  );
+  box-shadow: 0 0 0 4px rgba(191, 207, 214, 0.45);
+}
+
+/* Buttons in navbar + generic .btn */
+.toolbar button,
+.btn {
+  border-radius: 999px;
+  padding: 8px 16px;
+  border: 1px solid rgba(87, 110, 143, 0.6);
+  background: rgba(17, 24, 39, 0.75);
+  color: #e5e7eb;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.16s ease-out,
+              box-shadow 0.16s ease-out,
+              background 0.16s ease-out,
+              border-color 0.16s ease-out;
+}
+
+/* subtle hover animation */
+.toolbar button:hover,
+.btn:hover {
+  transform: translateY(-1px);
+  background: rgba(30, 64, 175, 0.9);
+  border-color: rgba(191, 219, 254, 0.9);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.45);
+}
+
+/* Theme toggle – orange/blue pill style */
+.theme-toggle {
+  background: rgba(98, 127, 197, 0.9);
+  border-radius: 999px;
+  padding: 3px;
+  display: inline-flex;
+  gap: 4px;
+}
+
+.theme-toggle button {
+  background: transparent;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: #879f86;
+}
+
+.theme-toggle button.active {
+  background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+  color: #111827;
+  box-shadow: 0 4px 12px rgba(248, 113, 113, 0.5);
+}
+
+/* Right-side special buttons: Share + Download */
+.toolbar > div:last-child button:nth-last-child(2) {
+  /* Share = pink pill */
+  background: radial-gradient(circle at top left, #fb6fbb, #6366f1);
+  border: none;
+  box-shadow: 0 10px 26px rgba(244, 114, 182, 0.6);
+}
+
+.toolbar > div:last-child button:nth-last-child(2):hover {
+  filter: brightness(1.06);
+}
+
+/* Download = teal pill */
+.toolbar > div:last-child button:nth-last-child(1) {
+  background: radial-gradient(circle at top, #22c7b8, #0ea5e9);
+  border: none;
+  color: #022c22;
+  box-shadow: 0 10px 26px rgba(34, 197, 163, 0.55);
+}
+.toolbar > div:last-child button:nth-last-child(1):hover {
+  filter: brightness(1.06);
+}
+
+/* Selects */
+.select {
+  padding: 6px 15px;
+  border-radius: 999px;
+  border: 1px solid rgba(191, 219, 254, 0.9);
+  background: rgba(15, 23, 42, 0.8);
+  color: #e5e7eb;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #fbbf24 50%),
+    linear-gradient(135deg, #f97316 50%, transparent 50%);
+  background-position: calc(100% - 10px) calc(50% - 3px),
+    calc(100% - 6px) calc(50% + 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.select:focus {
+  border-color: #a9b5f0;
+  box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.7);
+}
+
+/* =========================
+   LAYOUT WRAPPER
+   ========================= */
+.content {
+  flex: 1;
+  width: 100%;
+  padding: 18px 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: radial-gradient(circle at top left, #c1b9dd, #bac1d5 40%, #aba5ba);
+}
+
+/* container that holds editor + preview */
+.main-pane {
+  width: 100%;
+  display: flex;
+  gap: 18px;
+}
+
+/* Stacked layout: editor over preview */
+.content.layout-vertical .main-pane {
+  flex-direction: column;
+}
+
+/* Side-by-side layout */
+.content.layout-horizontal .main-pane {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+/* Editor / Preview / Console wrappers */
+.editor-wrapper,
+.preview-area,
+.console-area {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+/* =========================
+   EDITOR CARD
+   ========================= */
+.editor-card {
+  flex: 1;
+  background: var(--editor-shell);
+  border-radius: var(--radius);
+  border: 1px solid rgba(15, 23, 42, 0.8);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+  overflow: hidden;
+}
+
+/* tabs row (HTML / CSS / JS) */
+.editor-tabs {
+  display: flex;
+  gap: 10px;
+  padding: 10px 18px;
+  border-bottom: 1px solid rgba(55, 65, 81, 0.8);
+  background: linear-gradient(90deg, #243439, #5378bcb1);
+}
+
+.tab {
+  border: none;
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: transparent;
+  color: #c5ef63;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.18s ease-out,
+              color 0.18s ease-out,
+              transform 0.16s ease-out,
+              box-shadow 0.16s ease-out;
+}
+
+/* animated active tab (orange) */
+.tab.active {
+  color: #111827;
+  background: linear-gradient(135deg, #f88706ea, #df0fe2);
+  box-shadow: 0 8px 18px rgba(11, 222, 237, 0.7);
+  transform: translateY(-1px);
+}
+
+.tab:hover:not(.active) {
+  background: rgba(31, 41, 55, 0.9);
+}
+
+/* monaco editor area */
+.editor-body {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.editor-body .monaco-editor,
+.editor-body .monaco-editor .overflow-guard,
+.editor-body .monaco-scrollable-element {
+  height: 100% !important;
+  min-height: 0 !important;
+}
+
+/* =========================
+   PREVIEW CARD (MORE ATTRACTIVE)
+   ========================= */
+.preview {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid rgba(199, 210, 254, 0.9);
+  background: var(--card-bg);
+  box-shadow: 0 18px 40px rgba(148, 163, 184, 0.6);
+  overflow: hidden;
+}
+
+/* preview header */
+.preview-header {
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(191, 219, 254, 0.9);
+
+  /* soft blue/pink strip */
+  background: linear-gradient(90deg, #9ec4f2, #a5f3fc);
+  color: #112713;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.preview-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.preview-title span.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fb923c, #fb6fbb);
+  box-shadow: 0 0 0 4px rgba(253, 186, 116, 0.4);
+}
+
+.preview-subtitle {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+/* iframe */
+.preview-frame {
+  display: block;
+  width: 100%;
+  height: 40vh;
+  min-height: 260px;
+  border: 0;
+  background: #f9fafb;  /* light so text is always visible */
+}
+
+/* If preview content itself uses body color, we still have good contrast */
+.preview-inner {
+  padding: 20px;
+  color: #111827;
+}
+
+/* =========================
+   CONSOLE
+   ========================= */
+.console-header {
+  padding: 10px 16px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.console-body {
+  background: #020617cd;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.9);
+  padding: 12px 14px;
+  max-height: 220px;
+  overflow: auto;
+  font-family: monospace;
+  color: #bcbdbe;
+}
+
+/* make console one clear box */
+.console-wrapper {
+  background: transparent;
+}
+
+/* lines */
+.console-line {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(31, 41, 55, 0.6);
+  display: flex;
+  gap: 10px;
+}
+
+.console-line:last-child {
+  border-bottom: none;
+}
+
+.console-level {
+  min-width: 70px;
+  color: #7dd3fc;
+  font-weight: 700;
+}
+
+.console-level.error {
+  color: #fca5a5;
+}
+
+.console-level.warn {
+  color: #facc15;
+}
+
+.console-text {
+  white-space: pre-wrap;
+}
+
+/* =========================
+   SHARE TOAST (when you later use it instead of alert)
+   ========================= */
+.share-toast {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 50;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.toast-content {
+  background: #0f172a;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(129, 140, 248, 0.8);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e5e7eb;
+}
+
+.toast-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.toast-content input {
+  background: #020617;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 6px;
+  color: #cbd5f5;
+  width: 240px;
+  font-size: 12px;
+}
+
+.toast-content input:focus {
+  outline: none;
+}
+
+
+
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+/* Big desktop: side-by-side when layout = horizontal and slightly taller panels */
+@media (min-width: 1200px) {
+  .content.layout-horizontal .editor-wrapper {
+    flex: 0 0 52%;
+  }
+  .content.layout-horizontal .preview-area {
+    flex: 0 0 48%;
+  }
+
+  .content.layout-horizontal .preview-frame,
+  .content.layout-horizontal .editor-card {
+    min-height: 340px; /* a bit taller so they fill more of the page */
+  }
+}
+
+/* Medium screens (tablet / small laptop) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .content {
+    padding: 14px 14px 18px;
+  }
+
+  .content.layout-horizontal .main-pane {
+    flex-direction: column;
+  }
+
+  .preview-frame {
+    height: 36vh;
+    min-height: 260px;
+  }
+}
+
+/* Mobile / narrow screens */
+@media (max-width: 767px) {
+  .toolbar {
+    padding: 8px 10px;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 6px;
+  }
+
+  .toolbar > div {
+    flex-wrap: wrap;
+  }
+
+  .content {
+    padding: 10px 10px 16px;
+  }
+
+  .content.layout-horizontal .main-pane,
+  .content.layout-vertical .main-pane {
+    flex-direction: column;
+  }
+
+  .editor-card {
+    min-height: 220px;
+  }
+
+  .preview-frame {
+    height: 32vh;
+    min-height: 220px;
+  }
+
+  .console-body {
+    max-height: 160px;
+  }
+
+  .btn,
+  .toolbar button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .select {
+    max-width: 150px;
+    font-size: 12px;
+  }
+}
