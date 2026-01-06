@@ -1,17 +1,96 @@
-# React + Vite
+💻 Online Code Editor with Live Preview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive web-based code editor that allows users to write HTML, CSS, and JavaScript and instantly see the output through a real-time live preview. This project is designed to demonstrate practical frontend development skills and real-world UI behavior similar to platforms like CodePen and JSFiddle.
 
-Currently, two official plugins are available:
+🚀 Live Demo
+ https://kiran-code-editor.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+📌 Features
+🧠 Live Preview – Instantly reflects code changes without page reload
 
-## React Compiler
+📝 Multi-Editor Support – Separate editors for HTML, CSS, and JavaScript
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+⚡ Real-Time Rendering – Uses DOM updates for fast feedback
 
-## Expanding the ESLint configuration
+🎨 Clean & Modern UI – Developer-friendly interface
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-"# OnlineCode-Editor" 
+🔒 Sandboxed Preview – Secure execution environment
+
+🌐 Fully Deployed – Publicly accessible web application
+
+🛠️ Technologies Used
+Frontend
+
+HTML5 – Semantic structure
+
+CSS3 – Styling, layout, responsiveness
+
+JavaScript (ES6+) – Logic and live preview handling
+
+Tools & Platforms
+
+VS Code – Development environment
+
+Netlify – Deployment and hosting
+
+Browser DevTools – Debugging & testing
+
+📂 Project Structure
+├── index.html
+├── style.css
+├── script.js
+└── README.md
+
+⚙️ How It Works
+
+User writes code in the editor panels (HTML / CSS / JS)
+
+Input is captured using JavaScript event listeners
+
+Code is dynamically injected into a sandboxed iframe
+
+Output updates instantly in the Live Preview panel
+
+🎯 Project Objectives
+
+Build a real-world frontend project with instant feedback
+
+Understand live DOM manipulation
+
+Create a clean and responsive user interface
+
+Gain experience in deploying production-ready applications
+
+🧩 Challenges & Solutions
+Challenge	Solution
+Real-time rendering	Efficient DOM updates
+UI consistency	Modular CSS styling
+Secure preview	Sandboxed iframe
+Deployment	Configured Netlify hosting
+📚 What I Learned
+
+Real-time UI updates using JavaScript
+
+Structuring frontend projects cleanly
+
+Designing developer-focused interfaces
+
+Deploying static web applications
+
+Writing professional project documentation
+
+📈 Future Enhancements
+
+Theme switcher (Dark / Light mode)
+
+Auto-save using Local Storage
+
+Download code as ZIP
+
+Shareable project links
+
+Support for frameworks
+
+⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub — it really helps!
